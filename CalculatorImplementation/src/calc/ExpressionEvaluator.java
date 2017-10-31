@@ -1,8 +1,7 @@
 /** Class to evaluate a infix expression
-*@author Khushbu Patil
-*  Ver 1.0: 2017/10/27 
+*	@author Khushbu Patil
+*  	Ver 1.0: 2017/10/27 
 */
-
 
 package calc;
 
@@ -76,13 +75,12 @@ public class ExpressionEvaluator {
 				operand.push(new Double(t.element.toString()));
 			else {
 				try {
-				opnd2 = operand.pop();
-				opnd1 = operand.pop();
-				}
-				catch(EmptyStackException e) {
+					opnd2 = operand.pop();
+					opnd1 = operand.pop();
+				} catch (EmptyStackException e) {
 					throw new InvalidExpressionException("Invalid Expression");
 				}
-				logger.info("Evaluating " + opnd1 + " " + tokenStr +" "+ opnd2);
+				logger.info("Evaluating " + opnd1 + " " + tokenStr + " " + opnd2);
 				if (tokenStr.equals("+"))
 					res = Calculator.calculate(opnd1, opnd2, add);
 				else if (tokenStr.equals("-"))

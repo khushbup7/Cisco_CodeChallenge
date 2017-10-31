@@ -1,50 +1,71 @@
-# Windows image file caches
-Thumbs.db
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Maven files #
+###############
+mvnw
+mvnw.cmd
+
+
+# Logs and databases #
+######################
+*.log
+
+# OS generated files #
+######################
+.DS_Store*
 ehthumbs.db
+Icon?
+Thumbs.db
 
-# Folder config file
-Desktop.ini
+# Editor Files #
+################
+*~
+*.swp
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# Gradle Files #
+################
+.gradle
+.m2
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Build output directies
+target/
+build/
 
-# Windows shortcuts
-*.lnk
+# IntelliJ specific files/directories
+out
+.idea
+*.ipr
+*.iws
+*.iml
+atlassian-ide-plugin.xml
 
-# =========================
-# Operating System Files
-# =========================
+# Eclipse specific files/directories
+.classpath
+.project
+.settings
+.metadata
+bin/
 
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-.metadata/
+# NetBeans specific files/directories
+.nbattrs
 .recommenders/
-CalculatorImplementation/target/

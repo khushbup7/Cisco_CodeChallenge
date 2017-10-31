@@ -4,7 +4,6 @@ package calc;
 *  Ver 1.0: 2017/10/27 
 */
 
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,42 +42,7 @@ public class ShuntingYard {
 
 		Stack<Token<?>> oprStack = new Stack<Token<?>>(); // Operator Stack
 
-		for (int i = 0; i < l1.size(); i++) {
-
-			Token<?> token = l1.get(i);
-			String tokenStr = token.toString();
-			// if the token is an operand
-			if (!token.isOperator) {
-				outputQueue.add(token);
-			}
-
-			// if the token is "("
-			else if (tokenStr.equals("(")) {
-				oprStack.push(token);
-			}
-
-			// if the token is ")"
-			else if (tokenStr.equals(")")) {
-				if (!oprStack.isEmpty()) {
-					while (!oprStack.peek().toString().equals("(")) {
-						outputQueue.add(oprStack.pop());
-					}
-					oprStack.pop();
-				}
-			}
-
-			// if the token is any other operator
-			else {
-				while (!oprStack.isEmpty()) {
-					if (precedenceTable.get(oprStack.peek().toString()) >= precedenceTable.get(tokenStr)
-							&& !token.toString().equals("^"))
-						outputQueue.add(oprStack.pop());
-					else
-						break;
-				}
-				oprStack.push(token);
-			}
-		}
+		l1.stream().forEach(token -> doOperation(token, outputQueue, oprStack));
 
 		// If at the end of reading tokens, stack is not empty
 		while (!oprStack.isEmpty()) {
@@ -93,4 +57,38 @@ public class ShuntingYard {
 		return outputQueue;
 	}
 
+	private static void doOperation(Token<?> token, LinkedList<Token<?>> outputQueue, Stack<Token<?>> oprStack) {
+		String tokenStr = token.toString();
+		// if the token is an operand
+		if (!token.isOperator) {
+			outputQueue.add(token);
+		}
+
+		// if the token is "("
+		else if (tokenStr.equals("(")) {
+			oprStack.push(token);
+		}
+
+		// if the token is ")"
+		else if (tokenStr.equals(")")) {
+			if (!oprStack.isEmpty()) {
+				while (!oprStack.peek().toString().equals("(")) {
+					outputQueue.add(oprStack.pop());
+				}
+				oprStack.pop();
+			}
+		}
+
+		// if the token is any other operator
+		else {
+			while (!oprStack.isEmpty()) {
+				if (precedenceTable.get(oprStack.peek().toString()) >= precedenceTable.get(tokenStr)
+						&& !token.toString().equals("^"))
+					outputQueue.add(oprStack.pop());
+				else
+					break;
+			}
+			oprStack.push(token);
+		}
+	}
 }
